@@ -1,20 +1,12 @@
 import styles from './index.module.css'
 import TaskItem from './TaskItem'
+import CreateTask from './CreateTask'
 import { default as axios, useAxios } from '@/utils/axios'
 import apiPath from '@/utils/apiPath'
-import { useState, useCallback } from 'react'
+import { useCallback } from 'react'
 
 export default function TaskList() {
   const [{ data, loading, error }, refetch] = useAxios(apiPath.tasks.all_tasks)
-  const [taskInput, setTaskInput] = useState('')
-
-  const handleInputChange = (e) => setTaskInput(event.target.value)
-
-  const handleSubmit = async () => {
-    await axios.post(apiPath.tasks.create_task, { content: taskInput })
-    setTaskInput('')
-    refetch()
-  }
 
   const handleDelete = useCallback(async (id) => {
       await axios.delete(apiPath.tasks.delete_task(id))
@@ -38,10 +30,7 @@ export default function TaskList() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>To Do List</h1>
-      <div className={styles.create_task}>
-        <input value={taskInput} onChange={handleInputChange}></input>
-        <button onClick={handleSubmit}>Add</button>
-      </div>
+      <CreateTask submitCallback={refetch} />
       <ul className={styles.list}>{taskItems}</ul>
     </div>
   )
