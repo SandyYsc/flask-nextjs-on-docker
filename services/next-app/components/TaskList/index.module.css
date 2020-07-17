@@ -1,0 +1,27 @@
+.container {
+  width: fit-content;
+  max-width: 300px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.create_task {
+  width: 300px;
+  display: flex;
+}
+
+.create_task input {
+  flex: 1 1 200px;
+  margin-right: 10px;
+}
+
+.create_task button {
+  flex: 1 0 auto;
+}
+
+.list {
+  list-style-type:none;
+}
