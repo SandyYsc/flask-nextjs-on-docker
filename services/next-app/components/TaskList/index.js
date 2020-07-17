@@ -25,13 +25,15 @@ export default function TaskList() {
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error!</p>
-  if (!data || !data.length) return <p>No Task</p>
 
-  const taskItems = data.map(task =>
-    <li key={task.id}>
-      <TaskItem task={task} deleteTask={handleDelete}></TaskItem>
-    </li>
-  )
+  let taskItems = <p className={styles.no_task}>No task yet.</p>
+  if (data.length) {
+    taskItems = data.map(task =>
+      <li key={task.id}>
+        <TaskItem task={task} deleteTask={handleDelete}></TaskItem>
+      </li>
+    )
+  }
 
   return (
     <div className={styles.container}>
