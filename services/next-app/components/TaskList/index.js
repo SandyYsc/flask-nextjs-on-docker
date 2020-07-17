@@ -40,7 +40,7 @@ export default function TaskList() {
       <h1 className={styles.title}>To Do List</h1>
       <div className={styles.create_task}>
         <input value={taskInput} onChange={handleInputChange}></input>
-        <button onClick={handleSubmit}>submit</button>
+        <button onClick={handleSubmit}>Add</button>
       </div>
       <ul className={styles.list}>{taskItems}</ul>
     </div>
