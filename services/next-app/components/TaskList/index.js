@@ -15,23 +15,30 @@ export default function TaskList() {
     [refetch]
   )
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error!</p>
-
-  let taskItems = <p className={styles.no_task}>No task yet.</p>
-  if (data.length) {
-    taskItems = data.map(task =>
-      <li key={task.id}>
-        <TaskItem task={task} deleteTask={handleDelete}></TaskItem>
-      </li>
+  const renderTaskList = () => {
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error!</p>
+    if (!data.length) return <p className={styles.no_task}>No task yet.</p>
+    return (
+      <ul className={styles.list}>
+        {
+          data.map(task => (
+            <li key={task.id}>
+              <TaskItem task={task} deleteTask={handleDelete}></TaskItem>
+            </li>
+          ))
+        }
+      </ul>
     )
   }
+
+  const taskList = renderTaskList()
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>To Do List</h1>
       <CreateTask submitCallback={refetch} />
-      <ul className={styles.list}>{taskItems}</ul>
+      {taskList}
     </div>
   )
 }

@@ -20,6 +20,7 @@
 
 .create_task button {
   flex: 1 0 auto;
+  cursor: pointer;
 }
 
 .no_task {
