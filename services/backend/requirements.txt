@@ -2,6 +2,6 @@ Flask==1.1.1
 Flask-SQLAlchemy==2.4.1
 psycopg2-binary==2.8.4
 Flask-Migrate==2.5.3
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 marshmallow-sqlalchemy==0.23.1
 flask-marshmallow==0.13.0
